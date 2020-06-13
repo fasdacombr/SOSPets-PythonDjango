@@ -10,7 +10,15 @@ from .models import Pet
 @login_required(login_url='/login/')
 def list_all_pets(request):
     pet = Pet.objects.filter(ativo=True)
-    return render(request, 'list.html', {'pet' :pet})
+    return render(request, 'list.html', {'pet':pet})
+
+def list_user_pets(request):
+    pet = Pet.objects.filter(ativo=True, usuario=request.user)
+    return render(request, 'list.html', {'pet':pet})
+
+def pet_detail(request, id):
+    pet = Pet.objects.get(ativo=True, id=id)
+    return render(request, 'pet.html', {'pet':pet})
 
 def logout_user(request):
     logout(request)

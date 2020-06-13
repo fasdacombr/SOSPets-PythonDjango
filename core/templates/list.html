@@ -20,12 +20,14 @@
         <div class="row">
             {% for p in pet %}
             <div class="col-sm-4">
-                <div class="polaroid">
-                    <img src="{{ p.foto.url }}" style="width:100%">
-                    <div class="container">
-                        <p>{{ p.cidade }}</p>
+                <a href="../detail/{{ p.id }}">
+                    <div class="polaroid">
+                        <img src="{{ p.foto.url }}" style="width:100%">
+                        <div class="container">
+                            <p>{{ p.cidade }}</p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 
             </div>
             {% endfor %}
