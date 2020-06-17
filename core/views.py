@@ -8,6 +8,29 @@ from .models import Pet
 # Create your views here.
 
 @login_required(login_url='/login/')
+def register_pet(request):
+    return render(request, 'register-pet.html')
+
+@login_required(login_url='/login/')
+def set_pet(request):
+    city = request.POST.get('city')
+    email = request.POST.get('email')
+    phone = request.POST.get('phone')
+    description = request.POST.get('description')
+    photo = request.FILES.get('file')
+    user = request.user
+    pet = Pet.objects.create(email=email, fone=phone, descricao=description, foto=photo, cidade=city, usuario=user)
+    url = '/pet/detail/{}/'.format(pet.id)
+    return redirect(url)
+
+@login_required(login_url='/login/')
+def delete_pet(request, id):
+    pet = Pet.objects.get(id=id)
+    if pet.usuario == request.user:
+        pet.delete()
+    return redirect('/')
+
+@login_required(login_url='/login/')
 def list_all_pets(request):
     pet = Pet.objects.filter(ativo=True)
     return render(request, 'list.html', {'pet':pet})
