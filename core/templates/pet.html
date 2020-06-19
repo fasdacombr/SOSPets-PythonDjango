@@ -18,7 +18,7 @@
                         EXCLUIR
                     </button>
                 </a>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">
                         CANCELAR
                     </button>
             </div>
@@ -39,7 +39,7 @@
             <p><b>Tel.: </b>{{ pet.fone }}</p>
             <p><b>E-mail: </b>{{ pet.email }}</p>
             {% if request.user == pet.usuario %}
-                <a href="#">
+                <a href="/pet/register/?id={{ pet.id }}">
                     <button type="button" class="btn btn-primary">Alterar</button>
                 </a>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Excluir</button>
