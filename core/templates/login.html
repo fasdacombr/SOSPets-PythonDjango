@@ -11,31 +11,35 @@
 </head>
 <body>
     <div class="container mt-4">
-        <form action="submit", method="POST">
-            {% csrf_token %}
-            <h2>SOS Pets</h2>
-            <div class="form-group">
-                <label for="username">Usuário</label>
-                <input type="text", class="form-control" id="username" name="username"
-                placeholder="Nome do usuário">
-            </div>
+            <form action="submit", method="POST">
+                {% csrf_token %}
+                <div class="row" style="margin-left:35%; margin-top:20%">
+                    <div class="col-4">
+                        <h2 class="text-center">SOS Pets</h2>
+                        <div class="form-group">
+                            <label for="username">Usuário</label>
+                            <input type="text", class="form-control" id="username" name="username"
+                            placeholder="Nome do usuário">
+                        </div>
 
-            <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password", class="form-control" id="password" name="password"
-                placeholder="Senha">
-            </div>
+                        <div class="form-group">
+                            <label for="password">Senha</label>
+                            <input type="password", class="form-control" id="password" name="password"
+                            placeholder="Senha">
+                        </div>
 
-            <div>
-                {% for message in messages %}
-                    <div class="alert alert-danger">
-                        <strong>Error! </strong>{{ message }}
+                        <div>
+                            {% for message in messages %}
+                                <div class="alert alert-danger">
+                                    <strong>Error! </strong>{{ message }}
+                                </div>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-success">Entrar</button>
+                        </div>
                     </div>
-                {% endfor %}
-                <button type="submit" class="btn btn-success">Entrar</button>
-            </div>
-        </form>
-
+                </div>
+            </form>
+        
     </div>
 </body>
 </html>
